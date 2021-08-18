@@ -27,6 +27,7 @@ export default {
       }
     }
   },
+  
   effects:{ 
     /*  
      //处理异步更改---
@@ -54,7 +55,26 @@ export default {
           })
         }
         
-    }
+    },
+
+
+    // dva model里面的effects函数可以调用effects函数
+        // 在fetchIndCreate函数中调用refreshTree函数：
+    /* *refreshTree({ payload }, { call, put }){
+      const datas = yield call(indTree, payload.basrsId);
+      const { bizdata } = datas;
+      yield put({
+        type: 'saveIndTree',
+        payload: bizdata,
+      });
+    },
+    *fetchIndCreate({ payload }, { call, put }) {
+      // zhongmei：新增指标
+      yield call(indCreate, payload);
+      yield put({
+        type:'refreshTree',
+        payload
+      }) */
   },
   subscriptions:{
     inRouter({dispatch,history}){
